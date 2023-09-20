@@ -6,7 +6,9 @@ from dotenv import load_dotenv, find_dotenv
 
 #Se lee del archivo .env la api key de openai
 _ = load_dotenv('openAI.env')
-openai.api_key  = os.environ['openAI_api_key']
+openai.api_key  = os.environ['api_key']
+
+print(openai.api_key)
 
 #Se carga la lista de películas de movie_titles.json
 with open('movie_titles.json', 'r') as file:
@@ -49,6 +51,7 @@ print(response)
 
 # Step 4: Podemos iterar sobre todas las películas para generar la descripción. Dado que esto 
 #puede tomar bastante tiempo, el archivo con las descripciones para todas las películas es movie_descriptions.json
+
 """
 for i in range(len(movies)):
   prompt =  f"{instruction} Has una descripción de la película {movies[i]['title']}"

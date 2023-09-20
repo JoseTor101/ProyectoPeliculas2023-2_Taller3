@@ -10,7 +10,7 @@ import numpy as np
 
 #Se lee del archivo .env la api key de openai
 _ = load_dotenv('openAI.env')
-openai.api_key  = os.environ['openAI_api_key']
+openai.api_key  = os.environ['api_key']
 
 #Se carga la lista de películas de movie_titles.json
 with open('movie_descriptions.json', 'r') as file:
@@ -23,9 +23,9 @@ print(movies[idx_movie])
 #Se hace la conexión con la API de generación de imágenes. El prompt en este caso es:
 #Alguna escena de la película + "nombre de la película"
 response = openai.Image.create(
-  prompt=f"Alguna escena de la película {movies[np.random.randint(idx_movie)]['title']}",
+  prompt=f"Recrear una escena iconica de {movies[np.random.randint(idx_movie)]['title']}",
   n=1,
-  size="256x256"
+  size="512x512"
 )
 image_url = response['data'][0]['url']
 

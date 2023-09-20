@@ -6,7 +6,7 @@ from openai.embeddings_utils import get_embedding, cosine_similarity
 import numpy as np
 
 _ = load_dotenv('openAI.env')
-openai.api_key  = os.environ['openAI_api_key']
+openai.api_key  = os.environ['api_key']
 
 with open('movie_descriptions.json', 'r') as file:
     file_content = file.read()
@@ -19,10 +19,10 @@ print(emb)
 
 #Vamos a crear una nueva llave con el embedding de la descripción de cada película en el archivo .json
 
-for i in range(len(movies)):
+"""for i in range(len(movies)):
   emb = get_embedding(movies[i]['description'],engine='text-embedding-ada-002')
   movies[i]['embedding'] = emb
-
+"""
 
 #Vamos a almacenar esta información en un nuevo archivo .json
 with open('movie_descriptions_embeddings.json', 'r') as file:

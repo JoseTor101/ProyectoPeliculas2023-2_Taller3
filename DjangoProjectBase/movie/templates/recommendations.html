@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>My Movies</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    </head>
+
+    <body>
+        {% extends 'base.html' %}
+        {% block content %}
+        <div class="container mt-5">
+          
+        </div>
+
+        <div class="container">
+            <form action="">
+                <div class="mb-3">
+                    <label for="searchRecommendation" class="form-label">
+                        Ingresar recomendacion:
+                    </label>
+                    <input type="text" class="form-control" name="searchRecommendation" />
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+
+            <p> Searching for {{ searchRecommendation }} </p>
+            <br />
+
+            {% if searchRecommendation %}
+            <div class="row row-cols-1 row-cols-md-3 g-4"> 
+                {% for film in films %}
+                <div v-for="film in films" class="col"> 
+                    <div class="card"> 
+                        <img class="card-img-top" src="{{ film.image.url }}" /> 
+                        <div class="card-body"> 
+                            <a>
+                                <h5 class="card-title fw-bold">{{ film.title }}</h5> 
+                            </a>
+                            <p class="card-text">{{ film.description }}</p> 
+                            {% if film.url %} 
+                            <a href="{{ film.url }}" class="btn btn-primary"> 
+                                Movie Link 
+                            </a> 
+                            {% endif %} 
+                        </div> 
+                    </div> 
+                </div> 
+                {% endfor %} 
+                {% endif %}
+            </div> 
+        </div>
+        </div> 
+       
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        
+        {% endblock content %}
+    </body>
+</html>
+
